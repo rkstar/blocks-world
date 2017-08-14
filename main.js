@@ -1,4 +1,5 @@
 const initState = n => Array(n).fill([], 0, n).map((block, i) => `${i}`);
+module.exports.initState = initState;
 
 const validMove = (state, { a, b }) => notEqual(a, b) && notInSameStack(state, { a, b });
 const notEqual = (a, b) => a !== b;
@@ -37,25 +38,23 @@ const moveOnto = (state, { a, b }) => {
     return state;
   }
 
-  console.log(`[moveOnto] ${a} -> ${b} ----------`);
-
   let newState = [ ...state ];
   newState = returnStackedBlocks(newState, { n: a });
   newState = returnStackedBlocks(newState, { n: b, append: true });
   return moveBlocksToPosition(newState, { from: a, to: stackIndex(newState, b) });
 };
+module.exports.moveOnto = moveOnto;
 
 const moveOver = (state, { a, b }) => {
   if (!validMove(state, { a, b })) {
     return state;
   }
 
-  console.log(`[moveOver] ${a} -> ${b} ----------`);
-
   let newState = [ ...state ];
   newState = returnStackedBlocks(newState, { n: a });
   return moveBlocksToPosition(newState, { from: a, to: stackIndex(newState, b) });
 };
+module.exports.moveOver = moveOver;
 
 const pileOnto = (state, {a, b}) => {
   if (!validMove(state, { a, b })) {
@@ -72,6 +71,7 @@ const pileOnto = (state, {a, b}) => {
   newState = returnStackedBlocks(newState, { n: b, append: true });
   return moveBlocksToPosition(newState, { from: stackedBlocksA, to: stackIndex(newState, b) });
 };
+module.exports.pileOnto = pileOnto;
 
 const pileOver = (state, {a, b}) => {
   if (!validMove(state, { a, b })) {
@@ -88,23 +88,11 @@ const pileOver = (state, {a, b}) => {
   // pile the stack of a on top of b!
   return moveBlocksToPosition(newState, { from: stackedBlocksA, to: stackIndex(newState, b) });
 };
+module.exports.pileOver = pileOver;
 
 const quit = state => {
   // console.log(state);
   state.map((block, i) => console.log(`${i}: ${block.trim().split('').join(' ')}`));
   process.exit();
 };
-
-// run the program!
-
-const n = parseInt(process.argv[2]);
-let state = initState(n); // we're assuming that we'll init this program with a number.
-state = moveOnto(state, { a: 9, b: 1 });
-state = moveOver(state, { a: 8, b: 1 });
-state = moveOver(state, { a: 7, b: 1 });
-state = moveOver(state, { a: 6, b: 1 });
-state = pileOver(state, { a: 8, b: 6 });
-state = pileOver(state, { a: 8, b: 5 });
-state = moveOver(state, { a: 2, b: 1 });
-state = moveOver(state, { a: 4, b: 9 });
-quit(state);
+module.exports.quit = quit;

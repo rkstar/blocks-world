@@ -1,0 +1,24 @@
+{
+  "name": "blocks-world",
+  "version": "1.0.0",
+  "description": "blocks-world",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkstar/blocks-world.git"
+  },
+  "keywords": [],
+  "author": "David Fudge <rkstar@mac.com> (https://github.com/rkstar)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rkstar/blocks-world/issues"
+  },
+  "homepage": "https://github.com/rkstar/blocks-world#readme",
+  "dependencies": {}
+}
