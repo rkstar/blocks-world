@@ -8,3 +8,6 @@ there is nothing to install, but i `npm init`'d so that you can easily run `npm 
 
 ## adding tests
 new tests can be put into `/tests` and run with `npm test file_name`
+
+## notes
+developed for **node 8.3.0**
