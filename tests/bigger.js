@@ -12,4 +12,5 @@ state = moveOver(state, { a: 4, b: 9 });
 state = moveOnto(state, { a: 23, b: 16 });
 state = moveOnto(state, { a: 16, b: 24 });
 state = pileOnto(state, { a: 5, b: 1 });
+state = pileOnto(state, { a: 7, b: 16 });
 quit(state);
